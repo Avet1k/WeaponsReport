@@ -28,8 +28,10 @@ class Program
 class Soldier
 {
     private static string[] _weapons = { "штурмовая винтовка", "марксманская винтовка", "пулемёт", "пистолет-пулемёт" };
-    private static string[] _ranks = { "рядовой", "младший сержант", "ефрейтор" };
-
+    private static string[] _ranks = { "рядовой", "младший сержант", "ефрейтор" }; 
+    private string _weapon;
+    private int _serviceTerm;
+    
     public Soldier(string name)
     {
         Random random = new Random();
@@ -37,19 +39,17 @@ class Soldier
         int maxTerm = 25;
 
         Name = name;
-        Weapon = _weapons[random.Next(_weapons.Length)];
+        _weapon = _weapons[random.Next(_weapons.Length)];
         Rank = _ranks[random.Next(_ranks.Length)];
-        ServiceTerm = random.Next(minTerm, maxTerm);
+        _serviceTerm = random.Next(minTerm, maxTerm);
     }
     
     public string Name { get; private set; }
-    public string Weapon { get; private set; }
     public string Rank { get; private set; }
-    public int ServiceTerm { get; private set; }
-
+    
     public void ShowInfo()
     {
-        Console.WriteLine($"{Name} Оружие: {Weapon}. Звание: {Rank}. Срок службы: {ServiceTerm} мес.");
+        Console.WriteLine($"{Name} Оружие: {_weapon}. Звание: {Rank}. Срок службы: {_serviceTerm} мес.");
     }
 }
 
